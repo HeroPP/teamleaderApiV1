@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Any, Iterator, Optional
+from typing import Any, Optional
 
 import requests
 from ratelimit import limits, sleep_and_retry
@@ -10,11 +10,11 @@ from .tasks import Tasks
 
 class Client:
     def __init__(
-        self,
-        api_group="163402",
-        api_secret="Jlu9betJ2dJ00DHrzxuLOUBi6o9dP5TzoHCdDcWgNI9Z2l76GIwM7JaUDAMlku0xvZ3I6y2aWMlQTfWv5B5MMoPSec1iU8l"
-        + "pzsWTHIiWC8EAOIhB7Vdt03CFng1vtBoEeV9CVHIpfMqpQlWCwqMUqXCwejTaxoc9niY58hl20ksZk35FjSwqHxa1O4V"
-        + "4MtXn4zN6umhO",
+            self,
+            api_group="163402",
+            api_secret="Jlu9betJ2dJ00DHrzxuLOUBi6o9dP5TzoHCdDcWgNI9Z2l76GIwM7JaUDAMlku0xvZ3I6y2aWMlQTfWv5B5MMoPSec1iU8l"
+                       + "pzsWTHIiWC8EAOIhB7Vdt03CFng1vtBoEeV9CVHIpfMqpQlWCwqMUqXCwejTaxoc9niY58hl20ksZk35FjSwqHxa1O4V"
+                       + "4MtXn4zN6umhO",
     ):
         self.api_data = {"api_group": api_group, "api_secret": api_secret}
         self.tasks = Tasks(self.get_request, self.post_request)
@@ -22,7 +22,7 @@ class Client:
     @sleep_and_retry
     @limits(calls=100, period=60)
     def teamleader_request(
-        self, method, url_addition: str, additional_data
+            self, method, url_addition: str, additional_data
     ) -> Response:
         """
 
@@ -41,7 +41,7 @@ class Client:
         return response
 
     def post_request(
-        self, url_addition: Any, additional_data: Optional[dict] = None
+            self, url_addition: Any, additional_data: Optional[dict] = None
     ) -> Response:
         """
 
@@ -54,7 +54,7 @@ class Client:
         return self.teamleader_request(requests.post, url_addition, additional_data)
 
     def get_request(
-        self, url_addition: str, additional_data: Optional[dict] = None
+            self, url_addition: str, additional_data: Optional[dict] = None
     ) -> Response:
         """
 
