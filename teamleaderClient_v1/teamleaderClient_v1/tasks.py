@@ -5,6 +5,7 @@ from typing import Optional
 from requests import Response
 
 from .lists import TaskType, User
+from .methods import AddTLV1, DeleteTLV1, InfoTLV1, ListTLV1, UpdateTLV1
 
 
 class Entity(Enum):
@@ -23,6 +24,14 @@ class Priority(Enum):
 class Done(Enum):
     YES = 1
     NO = 0
+
+
+class Subscriptions(AddTLV1, UpdateTLV1, DeleteTLV1, ListTLV1, InfoTLV1):
+    def __init__(self, get_teamleader, post_teamleader) -> None:
+        self.get = get_teamleader
+        self.post = post_teamleader
+        self.url = "Subscription"
+        super().__init__()
 
 
 class Tasks:
@@ -112,3 +121,43 @@ class Tasks:
         }
 
         return self.post(url_addition="addTask", additional_data=data)
+
+
+class Tickets(ListTLV1):
+    def __init__(self, get_teamleader, post_teamleader) -> None:
+        self.get = get_teamleader
+        self.post = post_teamleader
+        self.url = "Ticket"
+        super().__init__()
+
+
+class Companies(ListTLV1):
+    def __init__(self, get_teamleader, post_teamleader) -> None:
+        self.get = get_teamleader
+        self.post = post_teamleader
+        self.url = "Companie"
+        super().__init__()
+
+
+class Contacts(ListTLV1, InfoTLV1):
+    def __init__(self, get_teamleader, post_teamleader) -> None:
+        self.get = get_teamleader
+        self.post = post_teamleader
+        self.url = "Contact"
+        super().__init__()
+
+
+class Calls(ListTLV1, AddTLV1):
+    def __init__(self, get_teamleader, post_teamleader) -> None:
+        self.get = get_teamleader
+        self.post = post_teamleader
+        self.url = "Call"
+        super().__init__()
+
+
+class TimeTracking(ListTLV1):
+    def __init__(self, get_teamleader, post_teamleader) -> None:
+        self.get = get_teamleader
+        self.post = post_teamleader
+        self.url = "Timetracking"
+        super().__init__()

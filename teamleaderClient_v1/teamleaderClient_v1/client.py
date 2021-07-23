@@ -1,18 +1,16 @@
 import configparser
 import os
-from enum import Enum
-from typing import Any, Optional
+from typing import Any
 
 import requests
 from ratelimit import limits, sleep_and_retry
-from requests import Response
 
-from .tasks import Tasks
+from .tasks import *
 
 
 class Client:
     def __init__(
-        self, api_group=None, api_secret=None, config_file_path=None,
+            self, api_group=None, api_secret=None, config_file_path=None,
     ):
         if config_file_path:
             api_group, api_secret = self.read_config_file(config_file_path)
@@ -20,6 +18,12 @@ class Client:
             raise ValueError("All parameters should be filled")
         self.api_data = {"api_group": api_group, "api_secret": api_secret}
         self.tasks = Tasks(self.get_request, self.post_request)
+        self.subscriptions = Subscriptions(self.get_request, self.post_request)
+        self.tickets = Tickets(self.get_request, self.post_request)
+        self.companies = Companies(self.get_request, self.post_request)
+        self.contacts = Contacts(self.get_request, self.post_request)
+        self.calls = Calls(self.get_request, self.post_request)
+        self.timetracking = TimeTracking(self.get_request, self.post_request)
 
     def read_config_file(self, config_file_path):
         config = configparser.ConfigParser()
@@ -32,9 +36,9 @@ class Client:
         return api_group, api_secret
 
     @sleep_and_retry
-    @limits(calls=100, period=60)
+    @limits(calls=15, period=5)
     def teamleader_request(
-        self, method, url_addition: str, additional_data
+            self, method, url_addition: str, additional_data
     ) -> Response:
         """
 
@@ -53,7 +57,7 @@ class Client:
         return response
 
     def post_request(
-        self, url_addition: Any, additional_data: Optional[dict] = None
+            self, url_addition: Any, additional_data: Optional[dict] = None
     ) -> Response:
         """
 
@@ -66,7 +70,7 @@ class Client:
         return self.teamleader_request(requests.post, url_addition, additional_data)
 
     def get_request(
-        self, url_addition: str, additional_data: Optional[dict] = None
+            self, url_addition: str, additional_data: Optional[dict] = None
     ) -> Response:
         """
 
