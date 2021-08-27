@@ -5,7 +5,7 @@ from typing import Any
 import requests
 from ratelimit import limits, sleep_and_retry
 
-from .tasks import *
+from .objects import *
 
 
 class Client:
