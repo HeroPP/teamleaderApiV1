@@ -24,6 +24,7 @@ class Client:
         self.contacts = Contacts(self.get_request, self.post_request)
         self.calls = Calls(self.get_request, self.post_request)
         self.timetracking = TimeTracking(self.get_request, self.post_request)
+        self.deals = Deals(self.get_request, self.post_request)
 
     def read_config_file(self, config_file_path):
         config = configparser.ConfigParser()
