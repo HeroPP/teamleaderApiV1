@@ -4,8 +4,8 @@ from typing import Optional
 
 from requests import Response
 
-from .privateLists import TaskType, User
 from .methods import AddTLV1, DeleteTLV1, InfoTLV1, ListTLV1, UpdateTLV1
+from .privateLists import TaskType, User
 
 
 class Entity(Enum):
@@ -50,15 +50,15 @@ class Tasks:
         )
 
     def update(
-        self,
-        task_id: int,
-        description: str = None,
-        duration: int = None,
-        task_type: TaskType = None,
-        user: User = None,
-        priority: Priority = None,
-        done: Done = None,
-        custom_field_ID: int = None,
+            self,
+            task_id: int,
+            description: str = None,
+            duration: int = None,
+            task_type: TaskType = None,
+            user: User = None,
+            priority: Priority = None,
+            done: Done = None,
+            custom_field_ID: int = None,
     ) -> Response:
 
         data = {
@@ -90,19 +90,19 @@ class Tasks:
                 yield object_element
 
     def add(
-        self,
-        description: str,
-        due_date: int,
-        user_id: int = User.JAAP_VAN_DEN_BROEK,
-        task_type_id: int = TaskType.DOORONTWIKKELING_RECHT_DIRECT,
-        duration: int = 0,
-        priority: Priority = Priority.D,
-        for_what_entity: Optional[Entity] = None,
-        for_id: Optional[int] = None,
-        creator_user_id: Optional[int] = None,
-        related_deal_id: Optional[int] = None,
-        related_ticket_id: Optional[int] = None,
-        custom_field_id: Optional[int] = None,
+            self,
+            description: str,
+            due_date: int,
+            user_id: int = User.JAAP_VAN_DEN_BROEK,
+            task_type_id: int = TaskType.DOORONTWIKKELING_RECHT_DIRECT,
+            duration: int = 0,
+            priority: Priority = Priority.D,
+            for_what_entity: Optional[Entity] = None,
+            for_id: Optional[int] = None,
+            creator_user_id: Optional[int] = None,
+            related_deal_id: Optional[int] = None,
+            related_ticket_id: Optional[int] = None,
+            custom_field_id: Optional[int] = None,
     ) -> Response:
 
         data = {

@@ -1,14 +1,14 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
 setup(
     name="teamleaderApiV1",
-    version="0.4",
+    packages=["teamleaderApiV1"],
+    version="0.1.1",
     url="https://github.com/HeroPP/teamleaderApiV1",
     license="MIT",
     author="Jaap",
     author_email="jaap1@me.com",
     description="Python framework on top of the teamleader v1 api",
-    python_requires=">=3.8",
     install_requires=[
         "certifi",
         "chardet",
