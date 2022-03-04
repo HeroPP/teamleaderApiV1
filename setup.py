@@ -3,7 +3,8 @@ from setuptools import setup
 setup(
     name="teamleaderApiV1",
     packages=["teamleaderApiV1"],
-    version="0.1.1",
+    version="0.4.1",
+    download_url="https://github.com/HeroPP/teamleaderApiV1/archive/refs/tags/v0.4.1.tar.gz",
     url="https://github.com/HeroPP/teamleaderApiV1",
     license="MIT",
     author="Jaap",
