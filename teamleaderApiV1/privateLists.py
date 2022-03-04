@@ -2,7 +2,6 @@ from enum import Enum
 
 
 class User(Enum):
-    AIMY_WIJNEN = 297368
     ANGELOS_MAVROGIANNIS = 329891
     ERIK_STOCK = 329441
     JAAP_VAN_DEN_BROEK = 297366

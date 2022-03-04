@@ -4,7 +4,7 @@ from typing import Optional
 
 from requests import Response
 
-from .lists import TaskType, User
+from .privateLists import TaskType, User
 from .methods import AddTLV1, DeleteTLV1, InfoTLV1, ListTLV1, UpdateTLV1
 
 
@@ -137,6 +137,11 @@ class Companies(ListTLV1):
         self.post = post_teamleader
         self.url = "Companie"
         super().__init__()
+
+    def info(self, object_id, data={}):
+        data.update({"company_id": str(object_id)})
+        reponse = self.post(url_addition="getCompany", additional_data=data)
+        return reponse.json()
 
 
 class Contacts(ListTLV1, InfoTLV1):
