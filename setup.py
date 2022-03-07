@@ -9,7 +9,7 @@ setup(
     author="Jaap",
     author_email="jaap1@me.com",
     url="https://github.com/HeroPP/teamleaderApiV1",
-    download_url="",
+    download_url="https://github.com/HeroPP/teamleaderApiV1/archive/refs/tags/v0.5.1.tar.gz",
     install_requires=[
         "certifi",
         "chardet",
