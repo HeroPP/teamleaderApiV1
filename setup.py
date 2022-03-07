@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="teamleaderApiV1",
-    version="0.4.4",
+    version="0.5.0",
     url="https://github.com/HeroPP/teamleaderApiV1",
     license="MIT",
     author="Jaap",
