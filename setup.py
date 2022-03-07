@@ -1,19 +1,15 @@
-import setuptools
-from setuptools import setup
-
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+from distutils.core import setup
 
 setup(
     name="teamleaderApiV1",
-    version="0.5.0",
-    url="https://github.com/HeroPP/teamleaderApiV1",
+    packages=["teamleaderApiV1"],
+    version="0.5.1",
     license="MIT",
+    description="Python framework on top of the teamleader v1 api",
     author="Jaap",
     author_email="jaap1@me.com",
-    description="Python framework on top of the teamleader v1 api",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
+    url="https://github.com/HeroPP/teamleaderApiV1",
+    download_url="",
     install_requires=[
         "certifi",
         "chardet",
@@ -23,8 +19,6 @@ setup(
         "requests",
         "urllib3",
     ],
-    packages=setuptools.find_packages(where="teamleaderApiV1"),
-    python_requires=">=3.6",
     classifiers=[  # Optional
         # How mature is this project? Common values are
         #   3 - Alpha
